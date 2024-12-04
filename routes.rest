@@ -15,9 +15,25 @@ Content-Type: application/json
 {
     "firstName": "Fugen",
     "lastName": "Elder",
-    "email": "fugen@example.com",
-
+    "email": "fugen@example.com"
 }
+
+###
+
+// Update user by id
+PUT http://localhost:3000/users/673be21b34b1753a1b88fbb3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Fugen",
+    "lastName": "Elder",
+    "email": "fugen@example.com"
+}
+
+###
+
+// Delete user by id
+DELETE http://localhost:3000/users/673be21b34b1753a1b88fbb3
 
 ###
 
@@ -34,6 +50,22 @@ Content-Type: application/json
     "name": "Nargacuga",
     "description": "A stealthy predator that moves silently through dense jungles, striking swiftly with its razor-sharp tail."
 }
+
+###
+
+// Update generated creature by id
+PUT http://localhost:3000/creatureGen/673be21b34b1753a1b88fbb3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Nargacuga",
+    "description": "A stealthy predator that moves silently through dense jungles, striking swiftly with its razor-sharp tail."
+}
+
+###
+
+// Delete generated creature by id
+DELETE http://localhost:3000/creatureGen/673be21b34b1753a1b88fbb3
 
 ###
 
@@ -54,6 +86,23 @@ Content-Type: application/json
 
 ###
 
+// Update special creature by id
+PUT http://localhost:3000/creatureSpe/673be21b34b1753a1b88fbb3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Shadow",
+    "description": "Shadow is a sleek and agile Nargacuga who loves sneaking around and pouncing during playtime. He’s searching for a patient companion to bond with.",
+    "category": "Nargacuga"
+}
+
+###
+
+// Delete special creature by id
+DELETE http://localhost:3000/creatureSpe/673be21b34b1753a1b88fbb3
+
+###
+
 // Get all items
 GET http://localhost:3000/items
 
@@ -69,3 +118,21 @@ Content-Type: application/json
     "category": "Nargacuga",
     "price": 1000
 }
+
+###
+
+// Update item by id
+PUT http://localhost:3000/items/673be21b34b1753a1b88fbb3 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Jungle Vine Ball",
+    "description": "A springy ball made from jungle vines, perfect for Nargacuga to chase and claw at during play.",
+    "category": "Nargacuga",
+    "price": 1000
+}
+
+###
+
+// Delete item by id
+DELETE http://localhost:3000/items/673be21b34b1753a1b88fbb3
