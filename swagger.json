@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "User Management API"
   },
-  "host": "example.com",
+  "host": "cse341final-pydp.onrender.com",
   "basePath": "/v1",
   "schemes": [
     "https"
