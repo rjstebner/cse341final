@@ -1,0 +1,245 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample server for a user management system.",
+    "version": "1.0.0",
+    "title": "User Management API"
+  },
+  "host": "example.com",
+  "basePath": "/v1",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get all users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "Fugen"
+                },
+                "lastName": {
+                  "example": "Elder"
+                },
+                "email": {
+                  "example": "fugen.elder@example.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get a user by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/creatureGen": {
+      "get": {
+        "tags": [
+          "CreatureGen"
+        ],
+        "description": "Get all generated creatures",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CreatureGen"
+        ],
+        "description": "Generate a new creature",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Nargacuga"
+                },
+                "description": {
+                  "example": "A stealthy predator that moves silently through dense jungles, striking swiftly with its razor-sharp tail."
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/creatureSpe": {
+      "get": {
+        "tags": [
+          "CreatureSpe"
+        ],
+        "description": "Get all special creatures",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CreatureSpe"
+        ],
+        "description": "Create a special creature",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Shadow"
+                },
+                "description": {
+                  "example": "Shadow is a sleek and agile Nargacuga who loves sneaking around and pouncing during playtime. He’s searching for a patient companion to bond with."
+                },
+                "category": {
+                  "example": "Nargacuga"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Get all items",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Create a new item",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Jungle Vine Ball"
+                },
+                "description": {
+                  "example": "A springy ball made from jungle vines, perfect for Nargacuga to chase and claw at during play."
+                },
+                "category": {
+                  "example": "Nargacuga"
+                },
+                "price": {
+                  "example": 1000
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
