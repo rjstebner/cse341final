@@ -51,7 +51,7 @@ const createCreatureGen = [
     }
 ];
 
-const deleteCreatureGpe = async (req, res) => {
+const deleteCreatureGen = async (req, res) => {
     try {
         const CreatureSpeId = new ObjectId(req.params.id);
         const results = await mongodb.getDB().collection('creatureGen').deleteOne({ _id: CreatureSpeId });
@@ -98,6 +98,6 @@ module.exports = {
     getAllCreatureGen,
     getCreatureGenById,
     createCreatureGen,
-    deleteCreatureGpe,
+    deleteCreatureGen,
     updateCreatureGen
 };

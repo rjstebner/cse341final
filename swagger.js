@@ -8,6 +8,6 @@ const doc = {
     schemes: ['http', 'https']
 };
 const outputFile = './swagger.json';
-const endpointsFiles = ['./routes/index.js', './routes/products.js'];
+const endpointsFiles = ['./routes/index.js', './routes/creatureSpe.js', './routes/creatureGen.js', './routes/items.js'];
 
 swaggetAutogen(outputFile, endpointsFiles, doc);
