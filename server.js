@@ -6,37 +6,31 @@ const session = require('express-session');
 //const gitHubStrategy = require('passport-github').Strategy;
 const cors = require('cors');
 
-const port = 3000;
+const port = process.env.PORT || 4000;
 const app = express();
-
 
 // Import routes
 const routes = require('./routes');
-const e = require('express');
-
 
 // Use routes
 app
-
     .use(bodyParser.json())
     .use(session({
-    secret: "secret",
-    resave: false,
-    saveUninitialized: true
-}))
-   //.use(passport.initialize())
+        secret: "secret",
+        resave: false,
+        saveUninitialized: true
+    }))
+    //.use(passport.initialize())
     //.use(passport.session())
     .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Z-key');
-    next();
-})
-    .use(cors({method: ['GET', 'POST', 'PUT', 'DELETE']}))
-    .use(cors({origin: '*'}))
-    .use('/', require('./routes'));
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+        res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Z-key');
+        next();
+    })
+    .use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] }))
+    .use('/', routes);
 
-    
 /*
 passport.use(new gitHubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
@@ -68,9 +62,6 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
     res.redirect('/');
 });
 */
-
-
-
 
 mongodb.initDB((err, db) => {
     if (err) {
