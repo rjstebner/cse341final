@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAllItems = async (req, res) => {
     try {
-        const result = await mongodb.getDB().collection('Items').find().toArray();
+        const result = await mongodb.getDB().collection('items').find().toArray();
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(result);
     } catch (err) {
@@ -15,7 +15,7 @@ const getAllItems = async (req, res) => {
 const getItemById = async (req, res) => {
     try {
         const ItemId = new ObjectId(req.params.id);
-        const result = await mongodb.getDB().collection('Items').findOne({ _id: ItemId });
+        const result = await mongodb.getDB().collection('items').findOne({ _id: ItemId });
         if (result) {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(result);
@@ -44,7 +44,7 @@ const createItem = [
             category: req.body.category
         };
         try {
-            const results = await mongodb.getDB().collection('Items').insertOne(newItem);
+            const results = await mongodb.getDB().collection('items').insertOne(newItem);
             if (results.acknowledged) {
                 res.status(200).send();
             } else {
@@ -74,7 +74,7 @@ const updateItem = [
             category: req.body.category
         };
         try {
-            const results = await mongodb.getDB().collection('Items').updateOne({ _id: ItemId }, { $set: updatedItem });
+            const results = await mongodb.getDB().collection('items').updateOne({ _id: ItemId }, { $set: updatedItem });
             if (results.modifiedCount > 0) {
                 res.status(200).send();
             } else {
@@ -89,7 +89,7 @@ const updateItem = [
 const deleteItem = async (req, res) => {
     try {
         const ItemId = new ObjectId(req.params.id);
-        const results = await mongodb.getDB().collection('Items').deleteOne({ _id: ItemId });
+        const results = await mongodb.getDB().collection('items').deleteOne({ _id: ItemId });
         if (results.deletedCount > 0) {
             res.status(200).send();
         } else {
