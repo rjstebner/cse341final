@@ -2,8 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const session = require('express-session');
-//const passport = require('passport');
-//const gitHubStrategy = require('passport-github').Strategy;
+const passport = require('passport');
+const gitHubStrategy = require('passport-github').Strategy;
 const cors = require('cors');
 
 const port = process.env.PORT || 4000;
@@ -20,8 +20,8 @@ app
         resave: false,
         saveUninitialized: true
     }))
-    //.use(passport.initialize())
-    //.use(passport.session())
+    .use(passport.initialize())
+    .use(passport.session())
     .use((req, res, next) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -31,7 +31,7 @@ app
     .use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] }))
     .use('/', routes);
 
-/*
+
 passport.use(new gitHubStrategy({
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -61,7 +61,7 @@ app.get('/auth/github/callback', passport.authenticate('github', { failureRedire
     req.session.user = req.user;
     res.redirect('/');
 });
-*/
+
 
 mongodb.initDB((err, db) => {
     if (err) {
